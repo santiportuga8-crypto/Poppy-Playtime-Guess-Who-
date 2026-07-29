@@ -129,10 +129,6 @@ body {
 }
 
 
-/* =========================================================
-   LOADING SCREEN TITLE
-========================================================= */
-
 .loading-title {
 
     color:
@@ -157,10 +153,6 @@ body {
 }
 
 
-/* =========================================================
-   LOADING TEXT
-========================================================= */
-
 .loading-text {
 
     color:
@@ -179,10 +171,6 @@ body {
 }
 
 
-/* =========================================================
-   LOADING DOTS
-========================================================= */
-
 .loading-dots {
 
     display:
@@ -196,10 +184,6 @@ body {
 
 }
 
-
-/* =========================================================
-   LOADING ANIMATION
-========================================================= */
 
 .loading-dots::after {
 
@@ -254,10 +238,6 @@ body {
 
 }
 
-
-/* =========================================================
-   LOADING BAR
-========================================================= */
 
 .loading-bar-container {
 
@@ -336,11 +316,6 @@ body {
 }
 
 
-/* =========================================================
-   LOADING SCREEN COMPLETE
-   FADES DOWN
-========================================================= */
-
 .loading-screen.loading-complete {
 
     transform:
@@ -363,11 +338,14 @@ body {
 
 .top-bar {
 
+    position:
+        relative;
+
     width:
         100%;
 
     padding:
-        30px 20px 35px;
+        30px 80px 35px;
 
     text-align:
         center;
@@ -493,6 +471,108 @@ body {
             0% 50%;
 
     }
+
+}
+
+
+/* =========================================================
+   PLUS BUTTON
+========================================================= */
+
+.plus-button {
+
+    position:
+        absolute;
+
+    top:
+        50%;
+
+    right:
+        25px;
+
+    transform:
+        translateY(
+            -50%
+        );
+
+    width:
+        48px;
+
+    height:
+        48px;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    background:
+        #fff;
+
+    color:
+        #000;
+
+    border:
+        4px solid #fff;
+
+    box-shadow:
+        5px 5px 0 #555;
+
+    font-family:
+        "Press Start 2P",
+        monospace;
+
+    font-size:
+        20px;
+
+    line-height:
+        1;
+
+    cursor:
+        pointer;
+
+    text-decoration:
+        none;
+
+    transition:
+        transform 0.12s,
+        box-shadow 0.12s;
+
+}
+
+
+.plus-button:hover {
+
+    transform:
+        translate(
+            -3px,
+            calc(
+                -50% - 3px
+            )
+        );
+
+    box-shadow:
+        8px 8px 0 #777;
+
+}
+
+
+.plus-button:active {
+
+    transform:
+        translate(
+            2px,
+            calc(
+                -50% + 2px
+            )
+        );
+
+    box-shadow:
+        2px 2px 0 #555;
 
 }
 
@@ -682,10 +762,6 @@ body {
 
 }
 
-
-/* =========================================================
-   STRETCH IMAGE TO FILL
-========================================================= */
 
 .character-image img {
 
@@ -950,7 +1026,24 @@ body {
     .top-bar {
 
         padding:
-            25px 10px;
+            25px 65px 25px 10px;
+
+    }
+
+
+    .plus-button {
+
+        right:
+            12px;
+
+        width:
+            40px;
+
+        height:
+            40px;
+
+        font-size:
+            16px;
 
     }
 
@@ -1033,6 +1126,24 @@ body {
     GUESS WHO?
 
 </h1>
+
+
+<!-- ==================================================
+     PLUS BUTTON
+     OPENS YOUR OTHER GUESS WHO WEBSITE
+=================================================== -->
+
+<a
+    class="plus-button"
+    href="https://santiportuga8-crypto.github.io/GuessWho/"
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label="Open Guess Who"
+>
+
+    +
+
+</a>
 ```
 
 </div>
@@ -1070,11 +1181,6 @@ body {
 
 /* =========================================================
    CHARACTER LIST
-
-   CHAPTER INFORMATION PROVIDED BY USER
-
-   PNG FILES MUST BE IN THE SAME FOLDER
-   AS THIS HTML FILE.
 ========================================================= */
 
 const characters = [
@@ -1611,10 +1717,6 @@ characters.forEach(
         `;
 
 
-        /* =================================================
-           CLICK CHARACTER TO ELIMINATE / RESTORE
-        ================================================= */
-
         card.addEventListener(
             "click",
             function() {
@@ -1686,10 +1788,6 @@ const loadingBar =
     );
 
 
-/* =========================================================
-   LOAD ALL CHARACTER IMAGES
-========================================================= */
-
 let loadedImages =
     0;
 
@@ -1711,6 +1809,7 @@ characters.forEach(
 
                 loadedImages++;
 
+
                 const progress =
                     (
                         loadedImages /
@@ -1730,12 +1829,8 @@ characters.forEach(
         image.onerror =
             function() {
 
-                /*
-                   If an image cannot be found,
-                   continue loading the website.
-                */
-
                 loadedImages++;
+
 
                 const progress =
                     (
@@ -1786,11 +1881,6 @@ function checkLoadingComplete() {
             "100%";
 
 
-        /*
-           Small delay so the user
-           can see the completed bar.
-        */
-
         setTimeout(
             function() {
 
@@ -1809,7 +1899,6 @@ function checkLoadingComplete() {
 
 /* =========================================================
    FALLBACK
-   PREVENT LOADING SCREEN FROM STAYING FOREVER
 ========================================================= */
 
 setTimeout(
