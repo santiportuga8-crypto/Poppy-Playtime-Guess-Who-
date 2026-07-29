@@ -1,0 +1,1363 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+name="viewport"
+content="width=device-width, initial-scale=1.0"
+
+>
+
+<title>Poppy Playtime - Guess Who</title>
+
+<link
+    rel="icon"
+    type="image/png"
+    href="HuggyWuggy.png"
+>
+
+<style>
+
+/* =========================================================
+   POPPY PLAYTIME - GUESS WHO
+   BLACK AND WHITE + RED AND WHITE THEME
+========================================================= */
+
+@import url(
+    'https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap'
+);
+
+
+/* =========================================================
+   GLOBAL
+========================================================= */
+
+* {
+
+    box-sizing:
+        border-box;
+
+    margin:
+        0;
+
+    padding:
+        0;
+
+}
+
+
+html {
+
+    image-rendering:
+        pixelated;
+
+}
+
+
+body {
+
+    min-height:
+        100vh;
+
+    background:
+        #000;
+
+    color:
+        #fff;
+
+    font-family:
+        "Press Start 2P",
+        monospace;
+
+    overflow-x:
+        hidden;
+
+}
+
+
+/* =========================================================
+   TOP BAR
+========================================================= */
+
+.top-bar {
+
+    width:
+        100%;
+
+    padding:
+        30px 20px 35px;
+
+    text-align:
+        center;
+
+    background:
+        #000;
+
+    border-bottom:
+        5px solid #fff;
+
+}
+
+
+/* =========================================================
+   POPPY PLAYTIME
+========================================================= */
+
+.poppy-playtime-text {
+
+    color:
+        #fff;
+
+    font-size:
+        clamp(
+            12px,
+            2.5vw,
+            24px
+        );
+
+    line-height:
+        1.5;
+
+    margin-bottom:
+        12px;
+
+    letter-spacing:
+        3px;
+
+}
+
+
+/* =========================================================
+   GUESS WHO
+========================================================= */
+
+.top-bar h1 {
+
+    font-size:
+        clamp(
+            18px,
+            4vw,
+            42px
+        );
+
+    line-height:
+        1.5;
+
+}
+
+
+/* =========================================================
+   RED AND WHITE GUESS WHO TEXT
+========================================================= */
+
+.red-white-text {
+
+    background:
+        linear-gradient(
+            90deg,
+
+            #ff0000 0%,
+            #ffffff 25%,
+            #ff0000 50%,
+            #ffffff 75%,
+            #ff0000 100%
+        );
+
+    background-size:
+        300% 100%;
+
+    -webkit-background-clip:
+        text;
+
+    background-clip:
+        text;
+
+    -webkit-text-fill-color:
+        transparent;
+
+    animation:
+        redWhiteMove
+        3s
+        linear
+        infinite;
+
+    filter:
+        drop-shadow(
+            4px 4px 0 #fff
+        );
+
+}
+
+
+@keyframes redWhiteMove {
+
+    0% {
+
+        background-position:
+            0% 50%;
+
+    }
+
+    50% {
+
+        background-position:
+            100% 50%;
+
+    }
+
+    100% {
+
+        background-position:
+            0% 50%;
+
+    }
+
+}
+
+
+/* =========================================================
+   RESTORE ALL BUTTON
+========================================================= */
+
+.restore-container {
+
+    width:
+        100%;
+
+    display:
+        flex;
+
+    justify-content:
+        center;
+
+    padding:
+        25px 20px 0;
+
+}
+
+
+.restore-button {
+
+    padding:
+        15px 22px;
+
+    background:
+        #fff;
+
+    color:
+        #000;
+
+    border:
+        4px solid #fff;
+
+    box-shadow:
+        5px 5px 0 #555;
+
+    font-family:
+        "Press Start 2P",
+        monospace;
+
+    font-size:
+        9px;
+
+    cursor:
+        pointer;
+
+    transition:
+        transform 0.12s,
+        box-shadow 0.12s;
+
+}
+
+
+.restore-button:hover {
+
+    transform:
+        translate(
+            -3px,
+            -3px
+        );
+
+    box-shadow:
+        8px 8px 0 #777;
+
+}
+
+
+.restore-button:active {
+
+    transform:
+        translate(
+            2px,
+            2px
+        );
+
+    box-shadow:
+        2px 2px 0 #555;
+
+}
+
+
+/* =========================================================
+   CHARACTER BOARD
+========================================================= */
+
+.character-board {
+
+    width:
+        100%;
+
+    max-width:
+        1500px;
+
+    margin:
+        40px auto;
+
+    padding:
+        0 25px 60px;
+
+    display:
+        grid;
+
+    grid-template-columns:
+        repeat(
+            auto-fill,
+            minmax(
+                190px,
+                1fr
+            )
+        );
+
+    gap:
+        25px;
+
+}
+
+
+/* =========================================================
+   CHARACTER CARD
+========================================================= */
+
+.character-card {
+
+    position:
+        relative;
+
+    background:
+        #fff;
+
+    border:
+        5px solid #fff;
+
+    cursor:
+        pointer;
+
+    box-shadow:
+        7px 7px 0 #555;
+
+    transition:
+        transform 0.12s,
+        filter 0.12s,
+        box-shadow 0.12s;
+
+}
+
+
+.character-card:hover {
+
+    transform:
+        translate(
+            -4px,
+            -4px
+        );
+
+    box-shadow:
+        11px 11px 0 #777;
+
+}
+
+
+/* =========================================================
+   CHARACTER IMAGE
+========================================================= */
+
+.character-image {
+
+    width:
+        100%;
+
+    height:
+        230px;
+
+    background:
+        #000;
+
+    border-bottom:
+        5px solid #000;
+
+    overflow:
+        hidden;
+
+}
+
+
+/* =========================================================
+   STRETCH IMAGE TO FILL
+========================================================= */
+
+.character-image img {
+
+    width:
+        100%;
+
+    height:
+        100%;
+
+    display:
+        block;
+
+    object-fit:
+        fill;
+
+    image-rendering:
+        pixelated;
+
+}
+
+
+/* =========================================================
+   CHARACTER NAME
+========================================================= */
+
+.character-name {
+
+    min-height:
+        60px;
+
+    padding:
+        14px 10px 8px;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    text-align:
+        center;
+
+    background:
+        #fff;
+
+    color:
+        #000;
+
+    font-size:
+        10px;
+
+    line-height:
+        1.7;
+
+}
+
+
+/* =========================================================
+   CHAPTER INFORMATION
+========================================================= */
+
+.character-chapter {
+
+    min-height:
+        55px;
+
+    padding:
+        8px 10px 14px;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    text-align:
+        center;
+
+    background:
+        #fff;
+
+    color:
+        #555;
+
+    font-size:
+        7px;
+
+    line-height:
+        1.7;
+
+}
+
+
+/* =========================================================
+   ELIMINATED CHARACTER
+========================================================= */
+
+.character-card.eliminated {
+
+    filter:
+        grayscale(1)
+        brightness(0.35);
+
+    opacity:
+        0.55;
+
+}
+
+
+/* =========================================================
+   ELIMINATION CROSS
+========================================================= */
+
+.character-card.eliminated::before {
+
+    content:
+        "";
+
+    position:
+        absolute;
+
+    top:
+        50%;
+
+    left:
+        50%;
+
+    width:
+        90%;
+
+    height:
+        10px;
+
+    background:
+        #fff;
+
+    border:
+        4px solid #000;
+
+    transform:
+        translate(
+            -50%,
+            -50%
+        )
+        rotate(-15deg);
+
+    z-index:
+        5;
+
+}
+
+
+/* =========================================================
+   ELIMINATED TEXT
+========================================================= */
+
+.character-card.eliminated::after {
+
+    content:
+        "ELIMINATED";
+
+    position:
+        absolute;
+
+    top:
+        50%;
+
+    left:
+        50%;
+
+    transform:
+        translate(
+            -50%,
+            -50%
+        );
+
+    padding:
+        10px;
+
+    background:
+        #000;
+
+    border:
+        4px solid #fff;
+
+    color:
+        #fff;
+
+    font-size:
+        8px;
+
+    white-space:
+        nowrap;
+
+    z-index:
+        6;
+
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (
+    max-width: 700px
+) {
+
+    .character-board {
+
+        grid-template-columns:
+            repeat(
+                2,
+                1fr
+            );
+
+        gap:
+            12px;
+
+        padding:
+            0 12px 30px;
+
+    }
+
+
+    .character-image {
+
+        height:
+            170px;
+
+    }
+
+
+    .character-name {
+
+        font-size:
+            8px;
+
+        min-height:
+            50px;
+
+    }
+
+
+    .character-chapter {
+
+        font-size:
+            6px;
+
+        min-height:
+            48px;
+
+    }
+
+
+    .top-bar {
+
+        padding:
+            25px 10px;
+
+    }
+
+}
+
+
+@media (
+    max-width: 400px
+) {
+
+    .character-board {
+
+        grid-template-columns:
+            1fr;
+
+    }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- ======================================================
+     TOP TITLE
+====================================================== -->
+
+<div class="top-bar">
+
+```
+<div class="poppy-playtime-text">
+
+    POPPY PLAYTIME
+
+</div>
+
+
+<h1 class="red-white-text">
+
+    GUESS WHO?
+
+</h1>
+```
+
+</div>
+
+<!-- ======================================================
+     RESTORE ALL BUTTON
+====================================================== -->
+
+<div class="restore-container">
+
+```
+<button
+    class="restore-button"
+    id="restoreAllButton"
+>
+
+    RESTORE ALL
+
+</button>
+```
+
+</div>
+
+<!-- ======================================================
+     CHARACTER BOARD
+====================================================== -->
+
+<main
+    id="characterBoard"
+    class="character-board"
+></main>
+
+<script>
+
+
+/* =========================================================
+   CHARACTER LIST
+
+   CHAPTER INFORMATION PROVIDED BY USER
+
+   PNG FILES MUST BE IN THE SAME FOLDER
+   AS THIS HTML FILE.
+========================================================= */
+
+const characters = [
+
+    {
+        name:
+            "Huggy Wuggy",
+
+        chapters:
+            "1, 2, 3, 4, 5",
+
+        image:
+            "HuggyWuggy.png"
+    },
+
+
+    {
+        name:
+            "Poppy",
+
+        chapters:
+            "1, 2, 3, 4, 5",
+
+        image:
+            "Poppy.png"
+    },
+
+
+    {
+        name:
+            "The Player",
+
+        chapters:
+            "1, 2, 3, 4, 5",
+
+        image:
+            "Player.png"
+    },
+
+
+    {
+        name:
+            "Catbee / Cat-Bee",
+
+        chapters:
+            "1",
+
+        image:
+            "Catbee.png"
+    },
+
+
+    {
+        name:
+            "BoogieBot",
+
+        chapters:
+            "1, 2, 3, 4, 5",
+
+        image:
+            "BoogieBot.png"
+    },
+
+
+    {
+        name:
+            "Candycat",
+
+        chapters:
+            "1, 2, 3, 4, 5",
+
+        image:
+            "Candycat.png"
+    },
+
+
+    {
+        name:
+            "Bron",
+
+        chapters:
+            "1, 2, 3, 4, 5",
+
+        image:
+            "Bron.png"
+    },
+
+
+    {
+        name:
+            "Kissy Missy",
+
+        chapters:
+            "2, 3, 4, 5",
+
+        image:
+            "KissyMissy.png"
+    },
+
+
+    {
+        name:
+            "Mommy Long Legs",
+
+        chapters:
+            "2, 3",
+
+        image:
+            "MommyLongLegs.png"
+    },
+
+
+    {
+        name:
+            "Bunzo Bunny",
+
+        chapters:
+            "2, 3",
+
+        image:
+            "BunzoBunny.png"
+    },
+
+
+    {
+        name:
+            "PJ Pug-a-Pillar",
+
+        chapters:
+            "2, 3, 4, 5",
+
+        image:
+            "PJPugAPillar.png"
+    },
+
+
+    {
+        name:
+            "Daddy Long Legs",
+
+        chapters:
+            "2, 3",
+
+        image:
+            "DaddyLongLegs.png"
+    },
+
+
+    {
+        name:
+            "Baby Long Legs",
+
+        chapters:
+            "2, 3, 4, 5",
+
+        image:
+            "BabyLongLegs.png"
+    },
+
+
+    {
+        name:
+            "Miss Delight",
+
+        chapters:
+            "3, 4, 5",
+
+        image:
+            "MissDelight.png"
+    },
+
+
+    {
+        name:
+            "CatNap",
+
+        chapters:
+            "3, 4, 5",
+
+        image:
+            "CatNap.png"
+    },
+
+
+    {
+        name:
+            "DogDay",
+
+        chapters:
+            "3, 4, 5",
+
+        image:
+            "DogDay.png"
+    },
+
+
+    {
+        name:
+            "Bobby BearHug",
+
+        chapters:
+            "3, 4, 5",
+
+        image:
+            "BobbyBearHug.png"
+    },
+
+
+    {
+        name:
+            "CraftyCorn",
+
+        chapters:
+            "3, 4, 5",
+
+        image:
+            "CraftyCorn.png"
+    },
+
+
+    {
+        name:
+            "Hoppy Hopscotch",
+
+        chapters:
+            "3, 4, 5",
+
+        image:
+            "HoppyHopscotch.png"
+    },
+
+
+    {
+        name:
+            "KickinChicken",
+
+        chapters:
+            "3, 4, 5",
+
+        image:
+            "KickinChicken.png"
+    },
+
+
+    {
+        name:
+            "PickyPiggy",
+
+        chapters:
+            "3, 4, 5",
+
+        image:
+            "PickyPiggy.png"
+    },
+
+
+    {
+        name:
+            "Harley Sawyer / The Doctor",
+
+        chapters:
+            "3, 4, 5",
+
+        image:
+            "HarleySawyer.png"
+    },
+
+
+    {
+        name:
+            "Yarnaby",
+
+        chapters:
+            "4, 5",
+
+        image:
+            "Yarnaby.png"
+    },
+
+
+    {
+        name:
+            "Baba Chops",
+
+        chapters:
+            "4, 5",
+
+        image:
+            "BabaChops.png"
+    },
+
+
+    {
+        name:
+            "Rabie Baby",
+
+        chapters:
+            "4, 5",
+
+        image:
+            "RabieBaby.png"
+    },
+
+
+    {
+        name:
+            "Maggie Mako",
+
+        chapters:
+            "4, 5",
+
+        image:
+            "MaggieMako.png"
+    },
+
+
+    {
+        name:
+            "Simon Smoke",
+
+        chapters:
+            "4, 5",
+
+        image:
+            "SimonSmoke.png"
+    },
+
+
+    {
+        name:
+            "Icky Licky",
+
+        chapters:
+            "4, 5",
+
+        image:
+            "IckyLicky.png"
+    },
+
+
+    {
+        name:
+            "Allister Gator",
+
+        chapters:
+            "4, 5",
+
+        image:
+            "AllisterGator.png"
+    },
+
+
+    {
+        name:
+            "Poe",
+
+        chapters:
+            "4, 5",
+
+        image:
+            "Poe.png"
+    },
+
+
+    {
+        name:
+            "Lily Lovebraids",
+
+        chapters:
+            "4, 5",
+
+        image:
+            "LilyLovebraids.png"
+    },
+
+
+    {
+        name:
+            "Doey",
+
+        chapters:
+            "4, 5",
+
+        image:
+            "Doey.png"
+    },
+
+
+    {
+        name:
+            "Pianosaurus",
+
+        chapters:
+            "4, 5",
+
+        image:
+            "Pianosaurus.png"
+    },
+
+
+    {
+        name:
+            "Giblet",
+
+        chapters:
+            "5",
+
+        image:
+            "Giblet.png"
+    },
+
+
+    {
+        name:
+            "Chum Chompkins",
+
+        chapters:
+            "5",
+
+        image:
+            "ChumChompkins.png"
+    },
+
+
+    {
+        name:
+            "Leith Pierre",
+
+        chapters:
+            "4, 5",
+
+        image:
+            "LeithPierre.png"
+    },
+
+
+    {
+        name:
+            "Elliot Ludwig",
+
+        chapters:
+            "1, 2, 3, 4, 5",
+
+        image:
+            "ElliotLudwig.png"
+    },
+
+
+    {
+        name:
+            "The Prototype",
+
+        chapters:
+            "1, 2, 3, 4, 5",
+
+        image:
+            "Prototype.png"
+    },
+
+
+    /* =====================================================
+       CHAPTER 5
+    ===================================================== */
+
+    {
+        name:
+            "Miss Gracie",
+
+        chapters:
+            "5",
+
+        image:
+            "MissGracie.png"
+    }
+
+];
+
+
+/* =========================================================
+   CHARACTER BOARD
+========================================================= */
+
+const board =
+    document.getElementById(
+        "characterBoard"
+    );
+
+
+/* =========================================================
+   CREATE CHARACTER CARDS
+========================================================= */
+
+characters.forEach(
+    function(character) {
+
+
+        const card =
+            document.createElement(
+                "div"
+            );
+
+
+        card.className =
+            "character-card";
+
+
+        card.innerHTML = `
+
+            <div
+                class="character-image"
+            >
+
+                <img
+                    src="${character.image}"
+                    alt="${character.name}"
+                >
+
+            </div>
+
+
+            <div
+                class="character-name"
+            >
+
+                ${character.name}
+
+            </div>
+
+
+            <div
+                class="character-chapter"
+            >
+
+                Chapters: ${character.chapters}
+
+            </div>
+
+        `;
+
+
+        /* =================================================
+           CLICK CHARACTER TO ELIMINATE / RESTORE
+        ================================================= */
+
+        card.addEventListener(
+            "click",
+            function() {
+
+                card.classList.toggle(
+                    "eliminated"
+                );
+
+            }
+        );
+
+
+        board.appendChild(
+            card
+        );
+
+
+    }
+);
+
+
+/* =========================================================
+   RESTORE ALL CHARACTERS
+========================================================= */
+
+document
+    .getElementById(
+        "restoreAllButton"
+    )
+    .addEventListener(
+        "click",
+        function() {
+
+
+            const eliminatedCards =
+                document.querySelectorAll(
+                    ".character-card.eliminated"
+                );
+
+
+            eliminatedCards.forEach(
+                function(card) {
+
+                    card.classList.remove(
+                        "eliminated"
+                    );
+
+                }
+            );
+
+
+        }
+    );
+
+
+</script>
+
+</body>
+</html>
